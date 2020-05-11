@@ -19,6 +19,8 @@ class main_portal extends PluginBase implements Listener {
     public function onEnable() {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         // yaml гавно , любите json! а еще извиняюсь перед ржецом за такой код
+        if(!is_dir($this->getDataFolder()))
+            @mkdir($this->getDataFolder());
         $this->messages = new Config($this->getDataFolder()."messages.yml", Config::YAML, [
             "maxPortalPlayer" => 1,
             "blockPortal" => 120,
